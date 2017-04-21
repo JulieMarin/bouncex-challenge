@@ -31,15 +31,19 @@ function createOverlayElements() {
     'visibility': 'hidden'
   });
 
-  const cartContainer = $('<div>');
-  cartContainer.css({
-    'width': '60%',
-    'height': '60%',
-    'background-color': '#ffffff',
-  });
+  const createModalContainer = () => {
+    let modalContainerDiv = $('<div>');
+    modalContainerDiv.css({
+      'width': '60%',
+      'height': '60%',
+      'background-color': '#ffffff',
+    });
+    return modalContainerDiv;
+  };
+
 
   $("body").prepend(fullscreenBackdrop);
-  $('.fs-backdrop').append(cartContainer);
+  $('.fs-backdrop').append(createModalContainer());
 }
 
 
