@@ -1,45 +1,36 @@
-class DefaultStyles {
+class MiniCartUI {
   constructor() {
-    this.backdrop = this.createBackdrop();
-    this.modalContainer = this.createModalContainer();
+    this.overlay = this.createOverlay();
+    this.dialogWindow = this.createDialogWindow();
   }
 
-  createBackdrop() {
-    let backdropSection = $("<section>");
-    backdropSection.addClass('bx-backdrop');
-    backdropSection.css({
-      'background-color': 'rgba(0,0,0,0.85)',
-      'position': 'fixed',
-      'z-index': '800',
-      'width': '100vw',
-      'height': '100vh',
-      'display': 'flex',
-      'align-items': 'center',
-      'justify-content': 'center',
-      'visibility': 'hidden'
-    });
-    return backdropSection;
+  createOverlay() {
+    let overlay = $("<section>", { class: 'bx-backdrop' })
+      .css({
+        'background-color': 'rgba(0,0,0,0.85)',
+        'position': 'fixed',
+        'z-index': '800',
+        'width': '100vw',
+        'height': '100vh',
+        'display': 'flex',
+        'align-items': 'center',
+        'justify-content': 'center',
+        // 'visibility': 'hidden'
+      });
+    return overlay;
   };
 
-  createModalContainer() {
-    let modalContainerDiv = $('<div>');
-    modalContainerDiv.css({
-      'width': '60%',
-      'height': '60%',
-      'background-color': '#ffffff',
-    });
-    return modalContainerDiv;
+  createDialogWindow() {
+    let dialogWindow = $('<div>', { class: 'bx-modal-container' })
+      .css({
+        'display': 'flex',
+        'flex-direction': 'column',
+        'width': '735px',
+        'height': '455px',
+        'padding': '15px',
+        'background-color': '#ffffff',
+        'border-radius': '0.4%',
+      });
+    return dialogWindow;
   };
-
-  attachElement($selector, element, method) {
-    switch (method) {
-      case 'append':
-        $($selector).append(element);
-      case 'prepend':
-        $($selector).prepend(element);
-      default:
-        break;
-    };
-  }
-
 }
